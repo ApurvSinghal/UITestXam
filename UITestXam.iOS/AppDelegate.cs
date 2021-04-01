@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using UIKit;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace UITestXam.iOS
 {
@@ -22,6 +24,9 @@ namespace UITestXam.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            AppCenter.Start("831efd6a-e334-4d1a-bc0c-3744a781ee14",
+                   typeof(Analytics), typeof(Crashes));
+
 #if ENABLE_TEST_CLOUD
             Xamarin.Calabash.Start();
 #endif
